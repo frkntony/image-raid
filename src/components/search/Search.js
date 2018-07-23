@@ -38,9 +38,9 @@ class Search extends Component {
 
     this.setState({ amount:value })
 
-    // checks if query is empty. 
-    // if it's empty clears all results and doesn't let search to happen
-    if (this.state.searchText == '') this.setState({images: []})
+    // checks if query is empty.
+    // if it's empty clears all results and doesn't let search to
+    if (this.state.searchText === '') this.setState({images: []})
     else this.onTextChange(e)
   }
   
