@@ -19,6 +19,7 @@ class Search extends Component {
     const val = e.target.value
 
     this.setState({ [e.target.name]: val}, () => {
+
       if(val === ''){
         this.setState({
           images: []
@@ -29,13 +30,22 @@ class Search extends Component {
         .then(res => this.setState({images: res.data.hits}))
         .catch(err => console.log(err))
       }
-
-
     })
   }
 
+  // Changes number of pictures on screen. 
+  onAmountChange = (e, index, value) => {
 
-  onAmountChange= (e, index, value) => this.setState({ amount:value })
+    this.setState({ amount:value })
+
+    // checks if query is empty. 
+    // if it's empty clears all results and doesn't let search to happen
+    if (this.state.searchText == '') this.setState({images: []})
+    else this.onTextChange(e)
+  }
+  
+  
+  
 
   render() {
     console.log(this.state.images);
